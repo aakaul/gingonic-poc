@@ -1,0 +1,40 @@
+<html>
+
+    <body>
+        <h1>
+            Login
+        </h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <input type="text" name="uname">
+        <input type="password" name="pass">
+        <button onclick="signIn()">SignIn</button>
+
+        <script>
+            function signIn(){
+                const uname = document.querySelector("[name=uname]").value
+                const password = document.querySelector("[name=pass]").value
+                postData('/api/signin',{uname,password})
+            }
+
+            async function postData(url = '', data = {}) {
+                console.log(data)
+                const response = await fetch(url, {
+                    method: 'POST', 
+                    mode: 'cors', 
+                    cache: 'no-cache',
+                    credentials: 'same-origin',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    redirect: 'follow', 
+                    body: JSON.stringify(data) 
+                });
+                return response.json(); // parses JSON response into native JavaScript objects
+            }
+        </script>
+    </body>
+
+</html>

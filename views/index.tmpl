@@ -1,0 +1,12 @@
+<h1>
+    Logged IN {{ .title}}
+</h1>
+
+
+<button onclick="signOut()">SignOut</button>
+
+<script>
+    function signOut(){
+        fetch("/api/signOut")
+    }
+</script>
